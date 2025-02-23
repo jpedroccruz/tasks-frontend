@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react"
 import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
-import getAllTasks from "./db/getAllTasks"
-import createTask from "./db/createTask"
-import deleteTask from "./db/deleteTask"
-import updateTask from "./db/updateTask"
+import Db from "./db/db"
 
 type Task = {
   id: number,
@@ -17,25 +14,28 @@ export default function Home() {
   const [ tasks, setTasks ] = useState<Task[]>([])
 
   useEffect(() => {
-    getAllTasks().then(data => setTasks(data))
+    db.getAllTasks().then(data => setTasks(data))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tasks])
 
+  const db = new Db
+
   function createNewTask(title: string, description: string) {
-    createTask(title, description)
+    db.createTask(title, description)
     setTasks(tasks)
   }
 
   function deleteTaskById(id: number) {
-    deleteTask(id)
+    db.deleteTask(id)
     setTasks(tasks)
   }
 
   function changeTaskStatus(id: number) {
     const task = tasks.find(task => task.id === id)
     if (task?.status === 'pending') {
-      updateTask(id, 'completed')
+      db.updateTask(id, 'completed')
     } else {
-      updateTask(id, 'pending')
+      db.updateTask(id, 'pending')
     }
   }
 
