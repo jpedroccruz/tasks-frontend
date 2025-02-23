@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8">
       <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8 w-96 md:w-[566px]">
-        <h1 className="text-white font-semibold text-4xl">Lista de Tarefas</h1>
+        <h1 className="text-white text-center font-semibold text-4xl">Lista de Tarefas</h1>
         <AddTask createNewTask={createNewTask} />
         <Tasks tasks={tasks} deleteTaskById={deleteTaskById} changeTaskStatus={changeTaskStatus} />
       </div>
