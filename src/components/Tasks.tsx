@@ -17,8 +17,8 @@ type TasksProps = {
 export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: TasksProps) {
   const navigate = useNavigate()
 
-  function getTaskDetails(id: number, title: string, description: string) {
-    navigate(`/tasks/${id}?title=${title}&description=${description}`)
+  function getTaskDetails(id: number, title: string, description: string, status: string) {
+    navigate(`/tasks/${id}?title=${title}&description=${description}&status=${status}`)
   }
 
   return (
@@ -32,13 +32,13 @@ export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: Tasks
 
           <div className="flex items-center gap-4">
             <button
-              onClick={() => getTaskDetails(task.id, task.title, task.description)}
+              onClick={() => getTaskDetails(task.id, task.title, task.description, task.status)}
               className="text-[20px] text-[#000117] hidden md:block hover:cursor-pointer">
               Detalhes
             </button>
             
             <button
-              onClick={() => getTaskDetails(task.id, task.title, task.description)}
+              onClick={() => getTaskDetails(task.id, task.title, task.description, task.status)}
               className="text-[20px] text-[#000117] md:hidden hover:cursor-pointer">
               <Menu />
             </button>
