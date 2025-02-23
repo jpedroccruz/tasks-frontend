@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Input from "./Input"
 
 type AddTaskProps = {
   createNewTask: (title: string, description: string) => void
@@ -17,22 +18,8 @@ export default function AddTask({ createNewTask }: AddTaskProps) {
     }} 
     className="bg-[#13A8FE] w-full rounded-3xl flex flex-col justify-center items-center gap-7 p-8" >
       <div className="w-full flex flex-col gap-11">
-        <input
-          type="text"
-          name="taskTitle"
-          className="bg-white h-12 w-full placeholder:text-[#000117ae] px-4 rounded-3xl text-[20px] outline-blue-300"
-          placeholder="Nome da Tarefa"
-          value={title}
-          onChange={event => setTitle(event.target.value)}
-        />
-        <input
-          type="text"
-          name="taskDescription"
-          className="bg-white h-12 w-full placeholder:text-[#000117ae] px-4 rounded-3xl text-[20px] outline-blue-300"
-          placeholder="Descrição da Tarefa"
-          value={description}
-          onChange={event => setDescription(event.target.value)}
-        />
+        <Input name="taskTitle" placeholder="Nome da Tarefa" value={title} setState={setTitle} />
+        <Input name="taskDescription" placeholder="Descrição da Tarefa" value={description} setState={setDescription} />
       </div>
 
       <button 
