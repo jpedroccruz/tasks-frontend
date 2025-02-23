@@ -1,13 +1,7 @@
 import { Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import MenuButton from "./MenuButton";
-
-type Task = {
-  id: number,
-  title: string,
-  description: string,
-  status: string
-}
+import { Task } from "../Home";
 
 type TasksProps = {
   tasks: Task[]

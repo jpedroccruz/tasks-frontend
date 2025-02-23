@@ -1,12 +1,6 @@
 import { Menu } from "lucide-react"
 import { useEffect, useState } from "react"
-
-type Task = {
-  id: number,
-  title: string,
-  description: string,
-  status: string
-}
+import { Task } from "../Home"
 
 type MenuButtonProps = {
   getTaskDetails: (id: number, title: string, description: string, status: string) => void,

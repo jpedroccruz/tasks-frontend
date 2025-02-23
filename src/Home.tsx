@@ -4,7 +4,7 @@ import AddTask from "./components/AddTask"
 import Db from "./db/db"
 import Title from "./components/Title"
 
-type Task = {
+export type Task = {
   id: number,
   title: string,  
   description: string,
