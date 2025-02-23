@@ -8,8 +8,8 @@ export default function TaskDetails() {
   const status = searchParams.get('status') === 'pending' ? 'PENDENTE' : 'CONCLUíDA'
 
   return (
-    <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8">
-      <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8 w-96 md:w-[566px]">
+    <div className="h-dvh bg-[#000117] flex flex-col items-center">
+      <div className="flex flex-col py-8 gap-8 w-96 md:w-[566px]">
         <Title>Descrição da tarefa: {searchParams.get('title')}</Title>
         <div className="bg-[#13A8FE] w-full rounded-3xl flex flex-col justify-center items-center gap-7 p-8" >
           <div className="w-full flex justify-between">
