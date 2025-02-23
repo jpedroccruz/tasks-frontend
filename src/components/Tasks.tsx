@@ -1,5 +1,6 @@
-import { Menu, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
+import MenuButton from "./MenuButton";
 
 type Task = {
   id: number,
@@ -31,17 +32,7 @@ export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: Tasks
           </span>
 
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => getTaskDetails(task.id, task.title, task.description, task.status)}
-              className="text-[20px] text-[#000117] hidden md:block hover:cursor-pointer">
-              Detalhes
-            </button>
-            
-            <button
-              onClick={() => getTaskDetails(task.id, task.title, task.description, task.status)}
-              className="text-[20px] text-[#000117] md:hidden hover:cursor-pointer">
-              <Menu />
-            </button>
+            <MenuButton getTaskDetails={getTaskDetails} task={task} />
 
             <button onClick={() => deleteTaskById(task.id)} className="bg-[#13A8FE] hover:cursor-pointer hover:bg-[#13a8fec2] transition-all duration-300 p-4 rounded-r-3xl">
               <Trash2 />
