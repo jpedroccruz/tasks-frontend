@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
 import Db from "./db/db"
+import Title from "./components/Title"
 
 type Task = {
   id: number,
@@ -42,7 +43,7 @@ export default function Home() {
   return (
     <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8">
       <div className="h-dvh bg-[#000117] flex flex-col items-center py-8 gap-8 w-96 md:w-[566px]">
-        <h1 className="text-white text-center font-semibold text-4xl">Lista de Tarefas</h1>
+        <Title>Lista de Tarefas</Title>
         <AddTask createNewTask={createNewTask} />
         <Tasks tasks={tasks} deleteTaskById={deleteTaskById} changeTaskStatus={changeTaskStatus} />
       </div>
