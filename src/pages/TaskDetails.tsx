@@ -1,6 +1,7 @@
 import { ChevronLeft } from "lucide-react"
 import { useSearchParams } from "react-router"
 import Title from "../components/Title"
+import BlueContainer from "../components/BlueContainer"
 
 export default function TaskDetails() {
   const [ searchParams ] = useSearchParams()
@@ -11,7 +12,7 @@ export default function TaskDetails() {
     <div className="h-dvh bg-[#000117] flex flex-col items-center">
       <div className="flex flex-col py-8 gap-8 w-96 md:w-[566px]">
         <Title>Descrição da tarefa: {searchParams.get('title')}</Title>
-        <div className="bg-[#13A8FE] w-full rounded-3xl flex flex-col justify-center items-center gap-7 p-8" >
+        <BlueContainer as={'div'}>
           <div className="w-full flex justify-between">
             <a href="/" className="flex place-self-start items-center">
               <ChevronLeft />
@@ -25,7 +26,7 @@ export default function TaskDetails() {
           <div className="bg-white p-6 w-full rounded-3xl">
             <p className="text-2xl text-[#000017]">{searchParams.get('description')}</p>
           </div>
-        </div>
+        </BlueContainer>
       </div>
     </div>
   )
