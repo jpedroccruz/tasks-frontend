@@ -1,4 +1,5 @@
 import { Menu, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 type Task = {
   id: number,
@@ -14,6 +15,12 @@ type TasksProps = {
 }
 
 export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: TasksProps) {
+  const navigate = useNavigate()
+
+  function getTaskDetails(id: number, title: string, description: string) {
+    navigate(`/tasks/${id}?title=${title}&description=${description}`)
+  }
+
   return (
     <div className="w-full flex flex-col gap-4">
       {tasks.map(task => (
@@ -24,8 +31,17 @@ export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: Tasks
           </span>
 
           <div className="flex items-center gap-4">
-            <a href="" className="text-[20px] text-[#000117] hidden md:block">Detalhes</a>
-            <a href="" className="text-[20px] text-[#000117] md:hidden"><Menu /></a>
+            <button
+              onClick={() => getTaskDetails(task.id, task.title, task.description)}
+              className="text-[20px] text-[#000117] hidden md:block hover:cursor-pointer">
+              Detalhes
+            </button>
+            
+            <button
+              onClick={() => getTaskDetails(task.id, task.title, task.description)}
+              className="text-[20px] text-[#000117] md:hidden hover:cursor-pointer">
+              <Menu />
+            </button>
 
             <button onClick={() => deleteTaskById(task.id)} className="bg-[#13A8FE] hover:cursor-pointer hover:bg-[#13a8fec2] transition-all duration-300 p-4 rounded-r-3xl">
               <Trash2 />
