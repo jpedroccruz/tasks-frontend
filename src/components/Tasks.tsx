@@ -2,18 +2,34 @@ import { Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import MenuButton from "./MenuButton";
 import { Task } from "../Home";
+import ConfirmDeleteTaskModal from "./ConfirmDeleteTaskModal";
+import { useState } from "react";
 
 type TasksProps = {
   tasks: Task[]
-  deleteTaskById: (id: number) => void
   changeTaskStatus: (id: number) => void
+  deleteTaskById: (id: number) => void
 }
 
-export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: TasksProps) {
+export default function Tasks({
+   tasks,
+   changeTaskStatus,
+   deleteTaskById
+  }: TasksProps) {
   const navigate = useNavigate()
+  const [isConfirmDeleteTaskModalOpen, setIsConfirmDeleteTaskModalOpen] = useState(false)
+  const [taskToDelete, setTaskToDelete] = useState<Task>()
 
   function getTaskDetails(id: number, title: string, description: string, status: string) {
     navigate(`/tasks/${id}?title=${title}&description=${description}&status=${status}`)
+  }
+
+  function openConfirmDeleteTaskModal() {
+    setIsConfirmDeleteTaskModalOpen(true)
+  }
+  
+  function closeConfirmDeleteTaskModal() {
+    setIsConfirmDeleteTaskModalOpen(false)
   }
 
   return (
@@ -28,12 +44,23 @@ export default function Tasks({ tasks, deleteTaskById, changeTaskStatus }: Tasks
           <div className="flex items-center gap-4">
             <MenuButton getTaskDetails={getTaskDetails} task={task} />
 
-            <button onClick={() => deleteTaskById(task.id)} className="bg-[#13A8FE] hover:cursor-pointer hover:bg-[#13a8fec2] transition-all duration-300 p-4 rounded-r-3xl">
+            <button
+              onClick={() => {
+                setTaskToDelete(task)
+                openConfirmDeleteTaskModal()
+              }}
+              className="bg-[#13A8FE] hover:cursor-pointer hover:bg-[#13a8fec2] transition-all duration-300 p-4 rounded-r-3xl">
               <Trash2 />
             </button>
           </div>
         </div>
       ))}
+      {isConfirmDeleteTaskModalOpen &&
+      <ConfirmDeleteTaskModal
+        closeConfirmDeleteTaskModal={closeConfirmDeleteTaskModal}
+        deleteTaskById={deleteTaskById}
+        task={taskToDelete!}
+      />}
     </div>
   )
 }

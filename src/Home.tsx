@@ -45,7 +45,7 @@ export default function Home() {
       <div className="flex flex-col py-8 gap-8 w-96 md:w-[566px]">
         <Title>Lista de Tarefas</Title>
         <AddTask createNewTask={createNewTask} />
-        <Tasks tasks={tasks} deleteTaskById={deleteTaskById} changeTaskStatus={changeTaskStatus} />
+        <Tasks tasks={tasks} changeTaskStatus={changeTaskStatus} deleteTaskById={deleteTaskById} />
       </div>
     </div>
   )
