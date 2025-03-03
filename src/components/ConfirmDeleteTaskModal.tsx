@@ -25,7 +25,7 @@ export default function ConfirmDeleteTaskModal({
             </button>
           </div>
           <div className="flex flex-col bg-white p-6 w-full rounded-3xl gap-6">
-            <p className="text-2xl text-[#000017]">Confirm task exclusion: Study TypeScript</p>
+            <p className="text-2xl text-[#000017]">Confirm task exclusion: {task.title}</p>
             <div className="flex justify-between gap-2">
               <ConfirmButton onClick={() => {
                 deleteTaskById(task.id)
