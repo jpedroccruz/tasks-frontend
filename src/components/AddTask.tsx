@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import Input from "./Input"
 import BlueContainer from "./BlueContainer"
 
@@ -13,7 +13,8 @@ export default function AddTask({ createNewTask }: AddTaskProps) {
   return (
     <BlueContainer
       as={'form'}
-      onSubmit={() => {
+      onSubmit={(event: FormEvent<HTMLElement>) => {
+        event.preventDefault()
         createNewTask(title, description)
         setTitle("")
         setDescription("")
@@ -25,7 +26,7 @@ export default function AddTask({ createNewTask }: AddTaskProps) {
 
       <button 
         className="w-full h-12 bg-[#000117] text-white text-2xl rounded-3xl hover:cursor-pointer hover:bg-[#000117d6] transition-all duration-300">
-        Criar tarefa
+        Create Task
       </button>
     </BlueContainer>
   )

@@ -19,7 +19,7 @@ export default function MenuButton({ getTaskDetails, task}: MenuButtonProps) {
     <button
       onClick={() => getTaskDetails(task.id, task.title, task.description, task.status)}
       className="text-[20px] text-[#000117] hover:cursor-pointer">
-      {width! > 768 ? <p>Detalhes</p> : <Menu /> }
+      {width! > 768 ? <p>Details</p> : <Menu /> }
     </button>
   )
 }
