@@ -3,6 +3,7 @@ import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
 import Db from "./db/db"
 import Title from "./components/Title"
+import { ToastContainer } from "react-toastify"
 
 export type Task = {
   id: number,
@@ -47,6 +48,7 @@ export default function Home() {
         <AddTask createNewTask={createNewTask} />
         <Tasks tasks={tasks} changeTaskStatus={changeTaskStatus} deleteTaskById={deleteTaskById} />
       </div>
+      <ToastContainer />
     </div>
   )
 }
